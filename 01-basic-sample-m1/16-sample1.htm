@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Sample 1 - Profile Card</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- LIBRARY FILES -->
+    <link rel="preload" href="../basic/font/open-sans/OpenSans-Regular.ttf" as="font" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../basic/basic.min.css">
+    <script src="../basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+
+        window.onload = function () {
+
+            basic.start();
+            page.color = "#F0F2F5";
+
+            // MAIN CARD CONTAINER
+            // Using AutoLayout for centering the card on the page is one way, 
+            // but here we'll use a Box and center it manually or use page.mainBox with flex.
+
+
+            AutoLayout({
+                flow: "vertical",
+                align: "top center",
+                width: "100%",
+                height: "auto",
+                padding: 30,
+                gap: 15
+            });
+
+            // PROFILE IMAGE
+            // Placeholder image (using a colored circle with initial if no image)
+            const imgProfile = Box(0, 0, 100, 100, {
+                color: "#E1E5EA",
+                round: 50,
+                border: 4,
+                borderColor: "white"
+            });
+            // Adding a shadow to the image
+            that.elem.style.boxShadow = "0 5px 15px rgba(0,0,0,0.1)";
+
+            // NAME
+            Label({
+                text: "Sarah Connor",
+                fontSize: 24,
+                textColor: "#1A1A1A",
+                fontFamily: "opensans-bold", // Assuming this font is available or default
+                textAlign: "center"
+            });
+            that.elem.style.fontWeight = "bold";
+
+            // JOB TITLE
+            Label({
+                text: "UI/UX Designer",
+                fontSize: 16,
+                textColor: "#888888",
+                textAlign: "center",
+                top: -10 // Pull up slightly
+            });
+
+            // STATS ROW
+            HGroup({
+                gap: 30,
+                padding: [15, 0],
+                align: "center"
+            });
+
+            // POSTS
+            VGroup({ gap: 4, align: "center" });
+            Label({ text: "120", fontSize: 18, textColor: "#1A1A1A", fontWeight: "bold" });
+            that.elem.style.fontWeight = "bold";
+            Label({ text: "Posts", fontSize: 13, textColor: "#999999" });
+            endGroup();
+
+            // FOLLOWERS
+            VGroup({ gap: 4, align: "center" });
+            Label({ text: "5.4k", fontSize: 18, textColor: "#1A1A1A", fontWeight: "bold" });
+            that.elem.style.fontWeight = "bold";
+            Label({ text: "Followers", fontSize: 13, textColor: "#999999" });
+            endGroup();
+
+            // FOLLOWING
+            VGroup({ gap: 4, align: "center" });
+            Label({ text: "450", fontSize: 18, textColor: "#1A1A1A", fontWeight: "bold" });
+            that.elem.style.fontWeight = "bold";
+            Label({ text: "Following", fontSize: 13, textColor: "#999999" });
+            endGroup();
+
+            endGroup();
+
+            // BUTTONS ROW
+            HGroup({
+                gap: 15,
+                width: "100%",
+                align: "center"
+            });
+
+            // FOLLOW BUTTON
+            const btnFollow = Button(0, 0, 130, 44, {
+                text: "Follow",
+                color: "#4A90E2",
+                textColor: "white",
+                round: 12,
+                border: 0,
+                fontSize: 16
+            });
+            // Add hover effect manually since we are not using a component with built-in effects
+            btnFollow.on("mouseover", function () {
+                btnFollow.opacity = 0.9;
+            });
+            btnFollow.on("mouseout", function () {
+                btnFollow.opacity = 1;
+            });
+
+            // MESSAGE BUTTON
+            const btnMessage = Button(0, 0, 130, 44, {
+                text: "Message",
+                color: "white",
+                textColor: "#4A90E2",
+                round: 12,
+                border: 2,
+                borderColor: "#4A90E2",
+                fontSize: 16
+            });
+            btnMessage.on("mouseover", function () {
+                btnMessage.color = "#F5F9FF";
+            });
+            btnMessage.on("mouseout", function () {
+                btnMessage.color = "white";
+            });
+
+            endGroup();
+
+            endAutoLayout();
+
+        };
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-- HTML content -->
+
+</body>
+
+</html>
